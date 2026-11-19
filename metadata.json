@@ -1,0 +1,6 @@
+{
+  "name": "Portfolio Tạ Hiền Hương — Sư phạm Âm nhạc",
+  "description": "Website Portfolio học tập học phần Nhập môn Công nghệ số của sinh viên Tạ Hiền Hương, ngành Sư phạm Âm nhạc.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

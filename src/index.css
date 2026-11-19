@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-blush: #FFF0EE;
+  --color-cream: #FDFBF7;
+  --color-rose: #E8A598;
+  --color-rosewood: #9E4D45;
+  --color-butter: #FDE68A;
+  --color-espresso: #3F2E3E;
+  --color-taupe: #6E566C;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #FFF0EE;
+    color: #3F2E3E;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes botanical-sway {
+  0%, 100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(1.8deg) translate3d(2px, 3px, 0);
+  }
+}
+
+@keyframes botanical-sway-alt {
+  0%, 100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-1.6deg) translate3d(-2px, 4px, 0);
+  }
+}
+
+@keyframes butterfly-wing-flap {
+  0%, 100% {
+    transform: scaleX(1) skewY(0deg);
+  }
+  50% {
+    transform: scaleX(0.38) skewY(6deg);
+  }
+}
+
+@keyframes butterfly-float-a {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+  25% {
+    transform: translate3d(-18px, -14px, 0) rotate(-14deg);
+  }
+  50% {
+    transform: translate3d(-32px, 6px, 0) rotate(-3deg);
+  }
+  75% {
+    transform: translate3d(-12px, 16px, 0) rotate(-11deg);
+  }
+}
+
+@keyframes butterfly-float-b {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(10deg);
+  }
+  33% {
+    transform: translate3d(22px, -16px, 0) rotate(16deg);
+  }
+  66% {
+    transform: translate3d(10px, 14px, 0) rotate(4deg);
+  }
+}
+
+@keyframes butterfly-float-c {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  40% {
+    transform: translate3d(16px, -18px, 0) rotate(5deg);
+  }
+  75% {
+    transform: translate3d(-10px, -8px, 0) rotate(-12deg);
+  }
+}
+
+@keyframes petal-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -16px, 0) rotate(0deg);
+  }
+  15% {
+    opacity: 0.78;
+  }
+  80% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-28px, 160px, 0) rotate(130deg);
+  }
+}
+
+.animate-botanical-sway {
+  animation: botanical-sway 9s ease-in-out infinite;
+  transform-origin: top right;
+}
+
+.animate-botanical-sway-alt {
+  animation: botanical-sway-alt 11s ease-in-out infinite;
+  transform-origin: top left;
+}
+
+.animate-botanical-sway-bottom {
+  animation: botanical-sway 10s ease-in-out infinite;
+  transform-origin: bottom left;
+}
+
+.animate-butterfly-wing {
+  animation: butterfly-wing-flap 0.52s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.animate-butterfly-a {
+  animation: butterfly-float-a 12s ease-in-out infinite;
+}
+
+.animate-butterfly-b {
+  animation: butterfly-float-b 14s ease-in-out infinite;
+}
+
+.animate-butterfly-c {
+  animation: butterfly-float-c 11s ease-in-out infinite;
+}
+
+.animate-petal-drift {
+  animation: petal-drift 10s ease-in-out infinite;
+}
+
