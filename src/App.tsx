@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { MotionConfig, motion, AnimatePresence } from 'motion/react';
 import { DEFAULT_PORTFOLIO_DATA } from './data/portfolioData';
 import { PageId, PortfolioData } from './types/portfolio';
@@ -11,14 +11,17 @@ import {
   LightboxState,
   ScrollToTopButton,
 } from './components/MediaWidgets';
-import {
-  ContentEditorModal,
-  EditorTarget,
-} from './components/ContentEditorModal';
+import type { EditorTarget } from './components/ContentEditorModal';
 import { AboutPage } from './pages/AboutPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { AssignmentDetailPage } from './pages/AssignmentDetailPage';
 import { SummaryPage } from './pages/SummaryPage';
+
+const ContentEditorModal = lazy(() =>
+  import('./components/ContentEditorModal').then((m) => ({
+    default: m.ContentEditorModal,
+  }))
+);
 
 const STORAGE_KEY = 'sweet_melody_portfolio_v1';
 
@@ -415,14 +418,18 @@ export default function App() {
           onClose={() => setLightboxImage(null)}
         />
 
-        <ContentEditorModal
-          isOpen={editorOpen}
-          initialTarget={editorTarget}
-          data={data}
-          onSave={handleSaveData}
-          onResetAll={handleResetData}
-          onClose={() => setEditorOpen(false)}
-        />
+        {editorOpen && (
+          <Suspense fallback={null}>
+            <ContentEditorModal
+              isOpen={editorOpen}
+              initialTarget={editorTarget}
+              data={data}
+              onSave={handleSaveData}
+              onResetAll={handleResetData}
+              onClose={() => setEditorOpen(false)}
+            />
+          </Suspense>
+        )}
       </div>
     </MotionConfig>
   );
